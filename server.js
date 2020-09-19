@@ -3,7 +3,7 @@ const app = express()
 const mongoose = require('mongoose');
 var methodOverride = require("method-override");
 const Article = require('./models/article');
-const port = 3030 
+const port = 3030 || process.env.PORT;
 const articlesRouter = require('./routes/articles');
 
 
