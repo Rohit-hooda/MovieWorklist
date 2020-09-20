@@ -9,9 +9,9 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="mb-4">New Movie</h1>
+    <h1 class="mb-4">Edit Movie</h1>
 
-    <form action="/articles" method="POST">
+    <form action="/articles/<%= article.id %>?_method=PUT" method="POST">
       <%- include('_form_fields') %>
     </form>
   </div>

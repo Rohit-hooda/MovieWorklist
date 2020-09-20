@@ -1,41 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <title>Movie WorkList</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Movie Worklist</title>
 </head>
 <body>
-    <div class = "container">
-        <h1 class="mb-4 text-center">Movie WorkList</h1>
-        <p class = "text-center"><strong>The movie WorkList Application lets you keep track of what movie you want to watch and also allows you to remove the movie that you already have watched.</strong></p>
-        <div class="text-center">
-            <a href ="/articles/new" class = "btn btn-success btn-center">New Movie </a>
-        </div>
-    </div>
+  <div class="container">
+    <h1 class="mb-4">Movie Worklist</h1>
+    <a href="/articles/new" class="btn btn-success">New Movie</a>
+
     <% articles.forEach(article => { %>
-        <div class = "card mt-4">
-            <div class = "card-body text-center">
-                <h4 class = "card-title"><%= article.title %> </h4>
-                
-                <div class = "card-subtitle text-muted mb-2">
-                    <%= article.createdAt.toLocaleDateString() %>
-                </div>
-                
-                <div class = "card-text mb-2">
-                    <%= article.description %>
-                </div>
-                
-                <a href = "articles/<%= article.slug %>" class = "btn btn-primary"> Read More</a>
-                
-                <form action = "/articles/<%= article.id %>?_method=DELETE" method = "POST" class = "d-inline">
-                    <button type = "submit" class="btn btn-danger">Delete</button>
-                </form>
-
-            </div>
-
+      <div class="card mt-4">
+        <div class="card-body">
+          <h4 class="card-title"><%= article.title %></h4>
+          <div class="card-subtitle text-muted mb-2">
+            <%= article.createdAt.toLocaleDateString() %>
+          </div>
+          <div class="card-text mb-2"><%= article.description %></div>
+          <a href="articles/<%= article.slug %>" class="btn btn-primary">Read More</a>
+          <a href="articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+          <form action="/articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
         </div>
+      </div>
     <% }) %>
+  </div>
 </body>
 </html>
